@@ -10,8 +10,9 @@ sqrt(x)
 x == 15
 
 TRUE
-TRUE && FALSE
-TRUE || FALSE
+TRUE & FALSE
+TRUE | FALSE
+!TRUE
 
 y <- c(1, 2, 5)
 length(y)
@@ -58,6 +59,18 @@ typeof(1L + 1)
 TRUE == 1
 TRUE == 2
 
+# explicit conversion
+as.logical(1)
+as.character(TRUE)
+as.integer("42")
+as.integer(c("hi", "10.7", "c7"))
+
+# type checking
+is.numeric(12)
+is.integer(12)
+is.integer(12L)
+is.infinite(c(Inf, 100))
+
 # everything is vector
 y
 is.vector(y)
@@ -69,14 +82,19 @@ length(x)
 c(x, 1)
 c(x, x)
 c(x, y)
+c(c(1, 2, 4), c(c(1)))
 
 integer(10)
 character(100)
 logical(5)
 logical(0)
 
+rep(7L, 20)
+
 NA
 NA_integer_
+
+c('aa', NA)
 
 c(1, NA)
 is.na(c(1, 2, NA, 4))
@@ -126,12 +144,20 @@ x + y
 T || F
 T | F
 
+T && F
+T & F
+
 c(T, F) || c(F, F)  # uses only the first, no warning !!!
 c(T, F) | c(F, F)
+
+x <- NULL
+!is.null(x) & x == 1
+!is.null(x) && x == 1
 
 # comparisons
 1:5 < 5:1
 1:3 %in% 2:100
+
 
 
 # apply functions ---------------------------------------------------------
@@ -142,7 +168,7 @@ lapply(x, exp)  # list apply
 
 # no vectorization
 seq(10)
-x <- c(7, 6, 2)
+x <- c(1, 1, 1)
 seq(x)          # doesn't work as expected
 lapply(x, seq)
 sapply(x, seq)  # doesn't simplify, same as lapply
@@ -191,7 +217,7 @@ seq_along(x)
 
 # matrices ----------------------------------------------------------------
 
-a <- matrix(c(1,2,3, 4,5,6), ncol = 3, byrow = T)
+a <- matrix(c(1,2,3, 4,5,6), nrow = 2, byrow = T)
 a
 t(a)
 
@@ -209,7 +235,7 @@ a %*% t(a)
 t(a) %*% a
 a %*% a
 
-matrix(1, 5, 5)  # same as ones(5) in Matlab/Python
+matrix(1, nrow = 5, ncol = 3)  # same as ones(5) in Matlab/Python
 x
 diag(x)
 

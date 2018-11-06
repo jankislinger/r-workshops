@@ -8,16 +8,15 @@ data("iris")
 
 iris
 iris <- as_data_frame(iris)
-colnames(iris) <- c("sepal_length", "sepal_width", "petal_length", "petal_width", "species")
 iris
 
 View(iris)
 
 
 # quick comparison of base vs tidyverse
-iris[iris$species == 'setosa', endsWith(colnames(iris), 'width')]  # from 101-console.R
+iris[iris$Species == 'setosa', endsWith(colnames(iris), 'Width')]  # from 101-console.R
 iris %>% 
-  filter(species == 'setosa') %>% 
+  filter(Species == 'setosa') %>% 
   select(ends_with('width'))
 
 
@@ -25,55 +24,59 @@ iris %>%
 
 ?select
 
-select(iris, petal_width, sepal_length)
-select(iris, petal_width:sepal_length)
+select(iris, Petal.Width, Sepal.Length)
+select(iris, Sepal.Width:Petal.Width)
 select(iris, 1:3)
 select(iris, starts_with('Sepal'))
 
 select(iris, everything())
-select(iris, species, everything())  # real pain in base R
+select(iris, Species, everything())  # real pain in base R
+
+select(iris, -Species)
+select(iris, -starts_with('Sepal'))
 
 
 # filter ------------------------------------------------------------------
 
 ?filter
 
-filter(iris, species == 'setosa')
-filter(iris, sepal_length >= 5)
-filter(iris, species == 'setosa', sepal_length >= 5)   # AND
-filter(iris, species == 'setosa' & sepal_length >= 5)  # AND, but use comma instead
-filter(iris, species == 'setosa' | sepal_length >= 5)  # OR
+filter(iris, Species == 'setosa')
+filter(iris, Sepal.Length >= 5)
+filter(iris, Species == 'setosa', Sepal.Length >= 5)   # AND
+filter(iris, Species == 'setosa' & Sepal.Length >= 5)  # AND, but use comma instead
+filter(iris, Species == 'setosa' | Sepal.Length >= 5)  # OR
 
 
 # arrange -----------------------------------------------------------------
 
 ?arrange
 
-arrange(iris, petal_width)
-arrange(iris, petal_width, petal_length)
+arrange(iris, Petal.Width)
+arrange(iris, Petal.Width, Petal.Length)
 
-arrange(iris, desc(petal_width))
-arrange(iris, -petal_width)
-arrange(iris, desc(petal_width), petal_length)
+arrange(iris, desc(Petal.Width))
+arrange(iris, -Petal.Width)
+arrange(iris, desc(Petal.Width), Petal.Length)
 
-arrange(iris, species)
-arrange(iris, desc(species))
-arrange(iris, -species)  # fails
+arrange(iris, Species)
+arrange(iris, desc(Species))
+arrange(iris, -Species)  # fails
 
 
 # mutate ------------------------------------------------------------------
 
 ?mutate
 
-mutate(iris, Sepal.Ratio = sepal_width / sepal_length)
-mutate(iris, Sepal.Ratio = sepal_width / sepal_length, Petal.Ratio = petal_width / petal_length)
+mutate(iris, Sepal.Ratio = Sepal.Width / Sepal.Length)
+mutate(iris, Sepal.Ratio = Sepal.Width / Sepal.Length, Petal.Ratio = Petal.Width / Petal.Length)
 mutate(iris, one = 1)
 mutate(iris, id = seq_len(n()))
+mutate(iris, n = row_number(Sepal.Length))
 
-mutate(iris, sepal_length = as.integer(sepal_length * 10))
-mutate(iris, species = toupper(species))
+mutate(iris, Sepal.Length = as.integer(Sepal.Length * 10))
+mutate(iris, Species = toupper(Species))
 
-transmute(iris, sepal_ratio = sepal_width / sepal_length, petal_ratio = petal_width / petal_length)
+transmute(iris, Species = Species, Sepal_ratio = Sepal.Width / Sepal.Length, Petal_ratio = Petal.Width / Petal.Length)
 
 # several other functions - not into details today
 mutate_at(iris, vars(1:4), funs(as.integer(. * 10)))
@@ -85,8 +88,8 @@ mutate_if(iris, is.factor, as.character)
 
 ?summarise
 
-summarise(iris, num_rows = n(), mean_sepal_length = mean(sepal_length), sd_sepal_length = sd(sepal_length),
-          num_setosas = sum(species == 'setosa'))
+summarise(iris, num_rows = n(), mean_Sepal.Length = mean(Sepal.Length), sd_Sepal.Length = sd(Sepal.Length),
+          num_setosas = sum(Species == 'setosa'))
 
 # again, jsut mention
 summarise_if(iris, is.numeric, funs(mean, sd))
@@ -94,12 +97,13 @@ summarise_if(iris, is.numeric, funs(mean, sd))
 
 # pipeline ----------------------------------------------------------------
 
-mutate(arrange(select(filter(iris, species == 'setosa'), -species), sepal_length, sepal_width), id = seq_len(n()))
+mutate(arrange(select(filter(iris, Species == 'setosa'), -Species), Sepal.Length, Sepal.Width), id = seq_len(n()))
+mutate(arrange(select(iris, Species == 'setosa'), Sepal.Length, Sepal.Width), id = seq_len(n()))
 
 iris %>% 
-  filter(species == 'setosa') %>% 
-  select(-species) %>% 
-  arrange(sepal_length, sepal_width) %>% 
+  filter(Species == 'setosa') %>% 
+  select(-Species) %>% 
+  # arrange(Sepal.Length, Sepal.Width) %>% 
   mutate(id = seq_len(n()))
 
 # Star Wars ---------------------------------------------------------------
@@ -128,12 +132,12 @@ starwars %>%
 # run couple improvised examples
 
 starwars %>% 
-  group_by(species) %>% 
+  group_by(Species) %>% 
   filter(n() >= 2L) %>% 
   summarise(mean_mass = mean(mass, na.rm = T))
 
 starwars %>% 
-  filter(is.na(species))
+  filter(is.na(Species))
 
 starwars %>% 
   distinct(hair_color, .keep_all = T)

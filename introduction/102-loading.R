@@ -1,5 +1,6 @@
 # datasets ----------------------------------------------------------------
 
+require(tidyverse)
 require(datasets)
 
 data("band_instruments")
@@ -20,7 +21,7 @@ save(my_data, file = 'data/my_data.rda')
 rm(my_data)
 my_data
 
-list.files()
+list.files('data')
 
 load('data/my_data.rda')
 my_data
