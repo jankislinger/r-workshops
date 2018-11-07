@@ -3,6 +3,9 @@ Videos:
 - [Jenny Bryan: Behind every great plot there's a great deal of wrangling](https://www.youtube.com/watch?v=4MfUCX_KpdE)
 - [Hadley Wickham: Managing many models with R](https://www.youtube.com/watch?v=rz3_FDVt9eg)
 
+ggplot gallery:
+[http://www.ggplot2-exts.org/gallery/]
+
 Read from RData - example
 ```
 file_url <- 'http://varianceexplained.org/files/trump_tweets_df.rda'
