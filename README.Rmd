@@ -1,0 +1,71 @@
+---
+title: "Untitled"
+output: md_document
+---
+
+
+# r-workshops
+Presentations and tutorial scripts for workshops in R
+
+## Upcoming workshops
+
+```{r}
+require(tidyverse)
+require(jsonlite)
+require(knitr)
+
+workshop_dates <- read_json('admin/workshop_dates.json', simplifyDataFrame = T)
+locations <- read_json('admin/locations.json', simplifyDataFrame = T)
+
+left_join(workshop_dates, locations, by = c('location' = 'key'), suffix = c('_ws', '_loc')) %>% 
+  mutate(organizer = 'minervo',
+         location = paste0('[', name, '](', url_loc, ')'),
+         register = paste0('[', organizer, '](', url_ws, ')')) %>% 
+  select('Název' = title, 'Datum' = date, 'Čas' = time, 'Učebna' = location, 'Registrace' = register) %>% 
+  kable()
+```
+
+## Semináře
+
+### Úvod do datové analýzy
+
+Série tří seminářů vám pomůže rychle se zorientovat v jazyce R a prostředí RStudia. Budeme se věnovat zejména analýze dat "tidy" přístupem - tedy pomocí knihoven shrnutých do balíku *tidyverse*. Během všech částí projdeme kompletně celou oblast manipulace s daty a vizualizace - od úplných začátků po pokročilé metody.
+
+Pro koho je seminář určen:
+
+* Lidé bez zkušeností s jazykem R, kteří mají nějakou zkušenost s některým z nástrojů pro práci s daty: Excel, SQL, nebo Python.
+* Mírně pokročilí v R, kteří dosud nevyužívali knihovnu tidyverse.
+
+Více informací o semináři na [zvláštní stránce](https://github.com/jankislinger/r-workshops/tree/master/introduction).
+
+#### Část I
+
+* Úvod do jazyka R a RStudia
+* Zdroje pro další vzdělávání a pomoc
+* Úvod do `tidyverse`
+* Načítání dat z RData, csv a Excelu (readr, readxl)
+* Základy manipulace s daty (dplyr)
+* Základy vizualizace (ggplot2)
+
+#### Část II
+
+* Agregování skupinových dat (dplyr)
+* Vizualizace skupinových dat (ggplot2)
+* Funkcionální programování (purrr)
+* Načítání dat z SQL (dbplyr)
+
+#### Část III
+
+* Operace s textem (stringr, tidyr)
+* Pokročilá manipulace s daty (dplyr, tidyr)
+* Shrnutí procesu load-transform-vizualize
+
+### Specialized workshops
+
+#### Neural Networks in R
+
+#### Web Scraping
+
+#### Programming in R
+
+#### Package Development
