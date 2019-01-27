@@ -1,0 +1,84 @@
+---
+title: "Semináře R"
+output: md_document
+---
+
+
+# Semináře R
+Prezentace a ukázkové skripty k semináři v jazyce R.
+
+## Termíny seminářů
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+require(tidyverse)
+require(jsonlite)
+require(knitr)
+
+workshop_dates <- read_json('admin/workshop_dates.json', simplifyDataFrame = T)
+locations <- read_json('admin/locations.json', simplifyDataFrame = T)
+
+workshops <- left_join(workshop_dates, locations, by = c('location' = 'key'), suffix = c('_ws', '_loc')) %>% 
+  mutate(is_upcomming = date > Sys.Date(),
+         organizer = 'Minervo',
+         location = paste0('[', name, '](', url_loc, ')'),
+         register = paste0('[', organizer, '](', url_ws, ')'),
+         register = ifelse(is_upcomming, register, '')) %>% 
+  arrange(!is_upcomming, date)
+
+workshops %>% 
+  select('Název' = title, 'Datum' = date, 'Čas' = time, 'Místo' = location, 'Registrace' = register) %>% 
+  kable()
+```
+
+## Semináře
+
+### Úvod do datové analýzy
+
+Série tří seminářů vám pomůže rychle se zorientovat v jazyce R a interaktivním prostředí RStudia. Budeme se věnovat zejména analýze dat "tidy" přístupem - tedy pomocí knihoven shrnutých do balíku *tidyverse*. Během všech částí projdeme kompletně celou oblast manipulace s daty a vizualizace - od úplných začátků po pokročilé metody. Na konci seminářů sami uvidíte, kolik práce se ušetřit jednoduchými operacemi v R oproti spreadsheet nástrojům, jako například Excel.
+
+Většina kurzů (soukromých i na vysokých školách) učí R klasickým způsobem. Moderní způsob pomocí balíku tidyverse je mnohem jednodušší pro začátečníky, jelikož nevyžaduje takové znalosti datových struktur v jazyce R. Navíc lze pomocí něj vytvářet analýzy a grafy mnohem snadněji s mnohem čitelnějším kódem. Proto se v tomto semináři zaměřujeme zejména na skupinu knihoven, které patří do tohoto balíku: dplyr, tidyr, purrr, ggplot2, ...
+
+Jednotlivé části semináře na sebe obsahově navazují. Doporučujeme proto, aby se zájemci přihlásili na všechny semináře zároveň.
+
+Pro koho je seminář určen:
+
+* Datový analytici, jejichž každodenním chlebem je Excel a/nebo SQL.
+* Studenti, kteří zpracovávají data pro svoji bakalářskou, nebo diplomovou práci.
+* Všichni, kdo chtějí změnit svoje zaměření na datovou analytiku, nebo data science.
+
+Jaké zkušenosti by měli účastníci mít: 
+
+* Lidé bez zkušeností s jazykem R, kteří mají nějakou zkušenost s některým z nástrojů pro práci s daty: Excel, SQL, nebo Python.
+* Mírně a středně pokročilí v R, kteří dosud nevyužívali knihovnu tidyverse.
+
+Více informací o semináři na [zvláštní stránce](https://github.com/jankislinger/r-workshops/tree/master/introduction).
+
+#### Část I
+
+* Úvod do jazyka R a RStudia
+* Zdroje pro další vzdělávání a pomoc
+* Úvod do `tidyverse`
+* Načítání dat z RData, csv a Excelu (readr, readxl)
+* Základy manipulace s daty (dplyr)
+* Základy vizualizace (ggplot2)
+
+#### Část II
+
+* Agregování skupinových dat (dplyr)
+* Vizualizace skupinových dat (ggplot2)
+* Funkcionální programování (purrr)
+* Načítání dat z SQL (dbplyr)
+
+#### Část III
+
+* Operace s textem (stringr, tidyr)
+* Pokročilá manipulace s daty (dplyr, tidyr)
+* Shrnutí procesu load-transform-vizualize
+
+### Připravované semináře
+
+* Machine Learning in R
+* Neural Networks in R
+* Web Scraping
+* Programming in R
+* Package Development
