@@ -1,50 +1,10 @@
-r-workshops
-===========
+Semináře R
+==========
 
-Presentations and tutorial scripts for workshops in R
+Prezentace a ukázkové skripty k semináři v jazyce R.
 
-Upcoming workshops
-------------------
-
-    require(tidyverse)
-
-    ## Loading required package: tidyverse
-
-    ## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-
-    ## ✔ ggplot2 3.1.0     ✔ purrr   0.2.5
-    ## ✔ tibble  1.4.2     ✔ dplyr   0.7.7
-    ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-    ## ✔ readr   1.1.1     ✔ forcats 0.3.0
-
-    ## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-
-    require(jsonlite)
-
-    ## Loading required package: jsonlite
-
-    ## 
-    ## Attaching package: 'jsonlite'
-
-    ## The following object is masked from 'package:purrr':
-    ## 
-    ##     flatten
-
-    require(knitr)
-
-    ## Loading required package: knitr
-
-    workshop_dates <- read_json('admin/workshop_dates.json', simplifyDataFrame = T)
-    locations <- read_json('admin/locations.json', simplifyDataFrame = T)
-
-    left_join(workshop_dates, locations, by = c('location' = 'key'), suffix = c('_ws', '_loc')) %>% 
-      mutate(organizer = 'minervo',
-             location = paste0('[', name, '](', url_loc, ')'),
-             register = paste0('[', organizer, '](', url_ws, ')')) %>% 
-      select('Název' = title, 'Datum' = date, 'Čas' = time, 'Učebna' = location, 'Registrace' = register) %>% 
-      kable()
+Termíny seminářů
+----------------
 
 <table>
 <thead>
@@ -52,31 +12,52 @@ Upcoming workshops
 <th align="left">Název</th>
 <th align="left">Datum</th>
 <th align="left">Čas</th>
-<th align="left">Učebna</th>
+<th align="left">Místo</th>
 <th align="left">Registrace</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">Úvod do datové analýzy I</td>
+<td align="left">2019-02-07</td>
+<td align="left">17:30 - 21:00</td>
+<td align="left"><a href="#">TBA</a></td>
+<td align="left"><a href="#">Minervo</a></td>
+</tr>
+<tr class="even">
+<td align="left">Úvod do datové analýzy II</td>
+<td align="left">2019-02-14</td>
+<td align="left">17:30 - 21:00</td>
+<td align="left"><a href="#">TBA</a></td>
+<td align="left"><a href="#">Minervo</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Úvod do datové analýzy III</td>
+<td align="left">2019-02-21</td>
+<td align="left">17:30 - 21:00</td>
+<td align="left"><a href="#">TBA</a></td>
+<td align="left"><a href="#">Minervo</a></td>
+</tr>
+<tr class="even">
+<td align="left">Úvod do datové analýzy I</td>
 <td align="left">2018-10-31</td>
 <td align="left">17:30 - 21:00</td>
 <td align="left"><a href="https://goo.gl/maps/N9p499oAagv">UP21 incubator</a></td>
-<td align="left"><a href="https://www.minervo.cz/events/uvod-do-datove-analyzy-vizualizace-a-machine-learningu-v-r-workshop-1">minervo</a></td>
+<td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Úvod do datové analýzy II</td>
 <td align="left">2018-11-06</td>
 <td align="left">17:30 - 21:00</td>
 <td align="left"><a href="https://goo.gl/maps/qLLukNidkZA2">Animika Hub</a></td>
-<td align="left"><a href="https://www.minervo.cz/events/uvod-do-datove-analyzy-vizualizace-a-machine-learningu-v-r-workshop-1">minervo</a></td>
+<td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Úvod do datové analýzy III</td>
 <td align="left">2018-11-13</td>
 <td align="left">17:30 - 21:00</td>
 <td align="left"><a href="https://goo.gl/maps/njiVc7DCqsT2">Opero</a></td>
-<td align="left"><a href="https://www.minervo.cz/events/uvod-do-datove-analyzy-vizualizace-a-machine-learningu-v-r-workshop-1">minervo</a></td>
+<td align="left"></td>
 </tr>
 </tbody>
 </table>
@@ -87,16 +68,36 @@ Semináře
 ### Úvod do datové analýzy
 
 Série tří seminářů vám pomůže rychle se zorientovat v jazyce R a
-prostředí RStudia. Budeme se věnovat zejména analýze dat "tidy"
-přístupem - tedy pomocí knihoven shrnutých do balíku *tidyverse*. Během
-všech částí projdeme kompletně celou oblast manipulace s daty a
-vizualizace - od úplných začátků po pokročilé metody.
+interaktivním prostředí RStudia. Budeme se věnovat zejména analýze dat
+"tidy" přístupem - tedy pomocí knihoven shrnutých do balíku *tidyverse*.
+Během všech částí projdeme kompletně celou oblast manipulace s daty a
+vizualizace - od úplných začátků po pokročilé metody. Na konci seminářů
+sami uvidíte, kolik práce se zjednodušit jednoduchými operacemi v R
+oproti oproti spreadsheet nástrojům, jako například Excel.
+
+Většina kurzů (soukromých i na vysokých školách) učí R klasickým
+způsobem. Moderní způsob pomocí balíku tidyverse je mnohem jednodušší
+pro začátečníky, jelikož nevyžaduje takové znalosti datových struktur v
+jazyce R. Navíc lze pomocí něj vytvářet analýzy a grafy mnohem snadněji
+s mnohem čitelnějším kódem. Proto se v tomto semináři zaměřujeme zejména
+na skupinu knihoven, které patří do tohoto balíku: dplyr, tidyr, purrr,
+ggplot2, ...
+
+Jednotlivé části semináře na sebe obsahově navazují. Doporučujeme proto,
+aby se zájemci přihlásili na všechny semináře zároveň.
 
 Pro koho je seminář určen:
 
+-   Datový analytici, jejichž každodenním chlebem je Excel a/nebo SQL.
+-   Studenti, kteří zpracovávají data pro svoji bakalářskou, nebo
+    diplomovou práci.
+-   Všichni, kdo chtějí změnit svoje zaměření na datovou analytiku, nebo
+    data science.
+
 -   Lidé bez zkušeností s jazykem R, kteří mají nějakou zkušenost s
     některým z nástrojů pro práci s daty: Excel, SQL, nebo Python.
--   Mírně pokročilí v R, kteří dosud nevyužívali knihovnu tidyverse.
+-   Mírně a středně pokročilí v R, kteří dosud nevyužívali knihovnu
+    tidyverse.
 
 Více informací o semináři na [zvláštní
 stránce](https://github.com/jankislinger/r-workshops/tree/master/introduction).
@@ -123,12 +124,10 @@ stránce](https://github.com/jankislinger/r-workshops/tree/master/introduction).
 -   Pokročilá manipulace s daty (dplyr, tidyr)
 -   Shrnutí procesu load-transform-vizualize
 
-### Specialized workshops
+### Připravované semináře
 
-#### Neural Networks in R
-
-#### Web Scraping
-
-#### Programming in R
-
-#### Package Development
+-   Machine Learning in R
+-   Neural Networks in R
+-   Web Scraping
+-   Programming in R
+-   Package Development
