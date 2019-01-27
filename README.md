@@ -33,7 +33,7 @@ Termíny seminářů
 </tr>
 <tr class="odd">
 <td align="left">Úvod do datové analýzy III</td>
-<td align="left">2019-02-21</td>
+<td align="left">2019-02-19</td>
 <td align="left">17:30 - 21:00</td>
 <td align="left"><a href="#">TBA</a></td>
 <td align="left"><a href="https://www.minervo.cz/events/uvod-do-datove-analyzy-v-r-workshop-3">Minervo</a></td>
@@ -72,8 +72,8 @@ interaktivním prostředí RStudia. Budeme se věnovat zejména analýze dat
 "tidy" přístupem - tedy pomocí knihoven shrnutých do balíku *tidyverse*.
 Během všech částí projdeme kompletně celou oblast manipulace s daty a
 vizualizace - od úplných začátků po pokročilé metody. Na konci seminářů
-sami uvidíte, kolik práce se ušetřit jednoduchými operacemi v R oproti
-spreadsheet nástrojům, jako například Excel.
+sami uvidíte, kolik práce se dá ušetřit jednoduchými operacemi v R
+oproti spreadsheet nástrojům, jako například Excel.
 
 Většina kurzů (soukromých i na vysokých školách) učí R klasickým
 způsobem. Moderní způsob pomocí balíku tidyverse je mnohem jednodušší
