@@ -34,7 +34,7 @@ workshops %>%
 
 ### Úvod do datové analýzy
 
-Série tří seminářů vám pomůže rychle se zorientovat v jazyce R a interaktivním prostředí RStudia. Budeme se věnovat zejména analýze dat "tidy" přístupem - tedy pomocí knihoven shrnutých do balíku *tidyverse*. Během všech částí projdeme kompletně celou oblast manipulace s daty a vizualizace - od úplných začátků po pokročilé metody. Na konci seminářů sami uvidíte, kolik práce se zjednodušit jednoduchými operacemi v R oproti oproti spreadsheet nástrojům, jako například Excel.
+Série tří seminářů vám pomůže rychle se zorientovat v jazyce R a interaktivním prostředí RStudia. Budeme se věnovat zejména analýze dat "tidy" přístupem - tedy pomocí knihoven shrnutých do balíku *tidyverse*. Během všech částí projdeme kompletně celou oblast manipulace s daty a vizualizace - od úplných začátků po pokročilé metody. Na konci seminářů sami uvidíte, kolik práce se ušetřit jednoduchými operacemi v R oproti spreadsheet nástrojům, jako například Excel.
 
 Většina kurzů (soukromých i na vysokých školách) učí R klasickým způsobem. Moderní způsob pomocí balíku tidyverse je mnohem jednodušší pro začátečníky, jelikož nevyžaduje takové znalosti datových struktur v jazyce R. Navíc lze pomocí něj vytvářet analýzy a grafy mnohem snadněji s mnohem čitelnějším kódem. Proto se v tomto semináři zaměřujeme zejména na skupinu knihoven, které patří do tohoto balíku: dplyr, tidyr, purrr, ggplot2, ...
 
@@ -45,6 +45,8 @@ Pro koho je seminář určen:
 * Datový analytici, jejichž každodenním chlebem je Excel a/nebo SQL.
 * Studenti, kteří zpracovávají data pro svoji bakalářskou, nebo diplomovou práci.
 * Všichni, kdo chtějí změnit svoje zaměření na datovou analytiku, nebo data science.
+
+Jaké zkušenosti by měli účastníci mít: 
 
 * Lidé bez zkušeností s jazykem R, kteří mají nějakou zkušenost s některým z nástrojů pro práci s daty: Excel, SQL, nebo Python.
 * Mírně a středně pokročilí v R, kteří dosud nevyužívali knihovnu tidyverse.

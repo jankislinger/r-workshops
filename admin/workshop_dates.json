@@ -20,20 +20,20 @@
   {
     "title": "Úvod do datové analýzy I",
     "date": "2019-02-07", "time": "17:30 - 21:00",
-    "location": "",
-    "url": "#"
+    "location": "avast",
+    "url": "https://www.minervo.cz/events/uvod-do-datove-analyzy-v-r-workshop-1"
   },
   {
     "title": "Úvod do datové analýzy II",
     "date": "2019-02-14", "time": "17:30 - 21:00",
-    "location": "",
-    "url": "#"
+    "location": "opero",
+    "url": "https://www.minervo.cz/events/uvod-do-datove-analyzy-v-r-workshop-2"
   },
   {
     "title": "Úvod do datové analýzy III",
     "date": "2019-02-21", "time": "17:30 - 21:00",
     "location": "",
-    "url": "#"
+    "url": "https://www.minervo.cz/events/uvod-do-datove-analyzy-v-r-workshop-3"
   }
 
 ]
