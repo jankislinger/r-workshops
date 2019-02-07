@@ -694,3 +694,67 @@ pid <- read_excel('data/statistika_pid.xlsx')
 - Convert table from wide to long
 - Show coverage (in percent) of accessible transportation for different types
 - Tell any story with the data
+
+
+## Agenda - Part 3
+
+**Block I 90 minutes**
+
+- Introduction to machine learning
+- Vizualization (ggplot2)
+- Linear regression
+
+**Break 30 minutes**
+
+- Refreshments & Networking
+
+**Block II 90 minutes**
+
+- Logistic regression
+- Model training (best practice)
+
+## Stats vs ML
+
+Statistics:
+
+- find and interpret relations
+- p-values, confidence intervals, standard errors
+- based on probability
+
+Machine Learning
+
+- relations hidden inside the model
+- predictions
+- based on optimization
+
+## Simple regression line
+
+```{r}
+as_data_frame(mtcars) %>% 
+  ggplot(aes(hp, mpg)) +
+  geom_point() +
+  geom_smooth(method = 'lm')
+```
+
+## Grouped mean
+
+```{r}
+as_data_frame(mtcars) %>% 
+  ggplot(aes(gear, mpg, group = gear)) +
+  geom_boxplot()
+```
+
+# Regression
+
+# Logistic regression
+
+## Example data
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# install.packages('mlbench')
+require(mlbench)
+data(BreastCancer)
+as_data_frame(BreastCancer)
+```
+
+
