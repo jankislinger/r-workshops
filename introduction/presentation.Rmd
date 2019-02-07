@@ -69,7 +69,6 @@ Me & R:
 - How to use RStudio efficiently
 - How to load and manipulate data
 - How to visualize your data
-- How to run statistical and machine learning models
 - How to automate your daily tasks in simple scripts
 - How to generate reports and analyses w/o any effort
 
@@ -82,7 +81,8 @@ Me & R:
 - General programming in R
 - Package development
 - Efficient sharing work with your team
-- Math behind statistical and machine learning models
+- How to run statistical and machine learning models
+- How to generate reports and analyses w/o any effort
 
 *All these topics (except base R) will be covered in other workshops*
 
@@ -102,6 +102,14 @@ data_frame(x = 1:5, y = x^2) %>%
 ```
 
 
+## Please give us a feedback
+
+<br>
+<div align="center">
+![](images/help-me-help-you.gif)
+</div>
+
+
 ## Agenda - Part 1
 
 **Block I 90 minutes**
@@ -109,8 +117,7 @@ data_frame(x = 1:5, y = x^2) %>%
 - Introduction into R & RStudio
 - Sources for learning and/or help
 - Syntax and data structures
-- Basic data imports (RData, csv)
-- Functional programming (purrr)
+- Basic data imports (RData, csv, Excel)
 
 
 **Break 30 minutes**
@@ -230,41 +237,27 @@ Other:
 
 # RStudio look-around
 
+## Shortcuts
+
+- `alt` + `shift` + `k`: See all shortcuts
+- `ctrl` + `shift` + `c`: comment / uncomment code
+- `ctrl` + `shift` + `m`: pipe `%>%`
+
+Most of shortcuts from other text editors works as well.
+
 # Loading data
 
 ## `dplyr` functions
 
 - `select()` select columns
 - `filter()` filter rows
-- `arrange()`	re-order or arrange rows
 - `mutate()` create new columns
+
+- `arrange()`	re-order or arrange rows
 - `summarise()`	summarise values
 - `group_by()` allows for group operations in the “split-apply-combine” concept
 
 # Functional Programming
-
-## Function arguments
-
-When calling a function we pass variables as:
-
-- Named arguments
-- Unnamed arguments
-
-Arguments inside the function are named. How to decide which variable is for which argument.
-
-1. All named arguments are assigned by name.
-2. Unnamed arguments are assigned by order.
-3. Unassigned arguments will use default value, if it exists.
-
-Somethimes, we pass more arguments than the function is ready for -> elipsis (`...`).
-Elipsis is something that the function passes into another function.
-Not all functions have elipsis, though.
-
-
-```{r, eval=FALSE, echo=TRUE}
-foo <- function(a, b, c, d = NA, ..., z = NA) {}
-foo(c = 1, 2, e = 3, 4, a = 5, 6)
-```
 
 ## Pipes
 
@@ -272,29 +265,31 @@ foo(c = 1, 2, e = 3, 4, a = 5, 6)
 ![](images/magrittr.jpeg)
 </div>
 
+Shortcut: `ctrl` + `shift` + `m`
+
+## Pipes
+
+`x %>% f()` is equivalent to `f(x)`
+
+`x %>% f(y)` is equivalent to `f(x, y)`
+
+```{r, echo=TRUE, eval=FALSE}
+mtcars %>% 
+  filter(hp >= 100) %>% 
+  mutate(cons = 235.215 / mpg) %>% 
+  rownames_to_column('model') %>% 
+  select(model, cons, hp, weight = wt)
+```
+
+is equivalent to
+
+```{r, echo=TRUE, eval=FALSE}
+select(rownames_to_column(mutate(filter(mtcars, hp >= 100), cons = 235.215 / mpg), 'model'),
+       model, cons, hp, weight = wt)
+```
+
+
 # Data manipulation
-
-# Grammar of Graphics
-
-## Agenda - Part 2
-
-**Block I 90 minutes**
-
-- Data manipulation (dplyr, joining)
-- Vizualization (ggplot2)
-- Data imports (Excel, SQL)
-
-**Break 30 minutes**
-
-- Refreshments & Networking
-
-**Block II 90 minutes**
-
-- Manipulation of grouped data (dplyr)
-- Vizualization of grouped data (ggplot2)
-- Advanced data manipulation (dplyr, tidyr)
-
-# Data manipulation:<br>examples
 
 ## Starwars summary
 
@@ -338,19 +333,6 @@ starwars %>%
 data('starwars')
 ```
 
-Select only characters that appeared in movie _The Force Awakens_ and sort them by number of means of transport.
-
-```{r}
-starwars %>% 
-  filter(map_lgl(films, ~'The Force Awakens' %in% .x)) %>% 
-  mutate_at(vars(num_vehicles = vehicles, num_starships = starships),
-            funs(map_int(., length))) %>% 
-  mutate(num_means_of_transport = num_vehicles + num_starships,
-         num_means_by_type = paste(num_vehicles, num_starships, sep = '+')) %>% 
-  arrange(-num_means_of_transport) %>% 
-  select(name, num_means_of_transport, num_means_by_type)
-```
-
 ## Mammals sleep
 
 ```{r, echo=TRUE}
@@ -377,7 +359,7 @@ msleep %>%
             max_sleep = max(sleep_total))
 ```
 
-# Vizualization:<br> examples
+# Grammar of Graphics
 
 ## `ggplot2` layers
 
@@ -391,6 +373,8 @@ Common layers:
 - Themes
 
 Combine layers by adding (`+`), not pipes.
+
+# Vizualization:<br> examples
 
 ## Final plot - our goal
 
@@ -426,6 +410,27 @@ ggplot(msleep, aes(bodywt, brainwt))
 ggplot(msleep, aes(bodywt, brainwt)) +
   geom_point(na.rm = T)
 ```
+
+## Agenda - Part 2
+
+**Block I 90 minutes**
+
+- Data manipulation (dplyr, joining)
+- Vizualization (ggplot2)
+- Data imports (Excel, SQL)
+
+**Break 30 minutes**
+
+- Refreshments & Networking
+
+**Block II 90 minutes**
+
+- Manipulation of grouped data (dplyr)
+- Vizualization of grouped data (ggplot2)
+- Advanced data manipulation (dplyr, tidyr)
+
+# Data manipulation:<br>examples
+
 
 ## Logarithmic scale
 
@@ -696,65 +701,19 @@ pid <- read_excel('data/statistika_pid.xlsx')
 - Tell any story with the data
 
 
-## Agenda - Part 3
+# Backup
 
-**Block I 90 minutes**
-
-- Introduction to machine learning
-- Vizualization (ggplot2)
-- Linear regression
-
-**Break 30 minutes**
-
-- Refreshments & Networking
-
-**Block II 90 minutes**
-
-- Logistic regression
-- Model training (best practice)
-
-## Stats vs ML
-
-Statistics:
-
-- find and interpret relations
-- p-values, confidence intervals, standard errors
-- based on probability
-
-Machine Learning
-
-- relations hidden inside the model
-- predictions
-- based on optimization
-
-## Simple regression line
+Select only characters that appeared in movie _The Force Awakens_ and sort them by number of means of transport.
 
 ```{r}
-as_data_frame(mtcars) %>% 
-  ggplot(aes(hp, mpg)) +
-  geom_point() +
-  geom_smooth(method = 'lm')
-```
-
-## Grouped mean
-
-```{r}
-as_data_frame(mtcars) %>% 
-  ggplot(aes(gear, mpg, group = gear)) +
-  geom_boxplot()
-```
-
-# Regression
-
-# Logistic regression
-
-## Example data
-
-```{r echo=TRUE, message=FALSE, warning=FALSE}
-# install.packages('mlbench')
-require(mlbench)
-data(BreastCancer)
-as_data_frame(BreastCancer)
+starwars %>% 
+  filter(map_lgl(films, ~'The Force Awakens' %in% .x)) %>% 
+  mutate_at(vars(num_vehicles = vehicles, num_starships = starships),
+            funs(map_int(., length))) %>% 
+  mutate(num_means_of_transport = num_vehicles + num_starships,
+         num_means_by_type = paste(num_vehicles, num_starships, sep = '+')) %>% 
+  arrange(-num_means_of_transport) %>% 
+  select(name, num_means_of_transport, num_means_by_type)
 ```
 
 
