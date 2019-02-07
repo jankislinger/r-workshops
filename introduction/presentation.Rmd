@@ -102,6 +102,14 @@ data_frame(x = 1:5, y = x^2) %>%
 ```
 
 
+## Please give us a feedback
+
+<br>
+<div align="center">
+![](images/help-me-help-you.gif)
+</div>
+
+
 ## Agenda - Part 1
 
 **Block I 90 minutes**
@@ -109,8 +117,7 @@ data_frame(x = 1:5, y = x^2) %>%
 - Introduction into R & RStudio
 - Sources for learning and/or help
 - Syntax and data structures
-- Basic data imports (RData, csv)
-- Functional programming (purrr)
+- Basic data imports (RData, csv, Excel)
 
 
 **Break 30 minutes**
@@ -230,6 +237,14 @@ Other:
 
 # RStudio look-around
 
+## Shortcuts
+
+- `alt` + `shift` + `k`: See all shortcuts
+- `ctrl` + `shift` + `c`: comment / uncomment code
+- `ctrl` + `shift` + `m`: comment / uncomment code
+
+Most of shortcuts from other text editors works as well.
+
 # Loading data
 
 ## `dplyr` functions
@@ -243,29 +258,6 @@ Other:
 
 # Functional Programming
 
-## Function arguments
-
-When calling a function we pass variables as:
-
-- Named arguments
-- Unnamed arguments
-
-Arguments inside the function are named. How to decide which variable is for which argument.
-
-1. All named arguments are assigned by name.
-2. Unnamed arguments are assigned by order.
-3. Unassigned arguments will use default value, if it exists.
-
-Somethimes, we pass more arguments than the function is ready for -> elipsis (`...`).
-Elipsis is something that the function passes into another function.
-Not all functions have elipsis, though.
-
-
-```{r, eval=FALSE, echo=TRUE}
-foo <- function(a, b, c, d = NA, ..., z = NA) {}
-foo(c = 1, 2, e = 3, 4, a = 5, 6)
-```
-
 ## Pipes
 
 <div align="center">
@@ -273,28 +265,6 @@ foo(c = 1, 2, e = 3, 4, a = 5, 6)
 </div>
 
 # Data manipulation
-
-# Grammar of Graphics
-
-## Agenda - Part 2
-
-**Block I 90 minutes**
-
-- Data manipulation (dplyr, joining)
-- Vizualization (ggplot2)
-- Data imports (Excel, SQL)
-
-**Break 30 minutes**
-
-- Refreshments & Networking
-
-**Block II 90 minutes**
-
-- Manipulation of grouped data (dplyr)
-- Vizualization of grouped data (ggplot2)
-- Advanced data manipulation (dplyr, tidyr)
-
-# Data manipulation:<br>examples
 
 ## Starwars summary
 
@@ -377,7 +347,7 @@ msleep %>%
             max_sleep = max(sleep_total))
 ```
 
-# Vizualization:<br> examples
+# Grammar of Graphics
 
 ## `ggplot2` layers
 
@@ -391,6 +361,8 @@ Common layers:
 - Themes
 
 Combine layers by adding (`+`), not pipes.
+
+# Vizualization:<br> examples
 
 ## Final plot - our goal
 
@@ -426,6 +398,27 @@ ggplot(msleep, aes(bodywt, brainwt))
 ggplot(msleep, aes(bodywt, brainwt)) +
   geom_point(na.rm = T)
 ```
+
+## Agenda - Part 2
+
+**Block I 90 minutes**
+
+- Data manipulation (dplyr, joining)
+- Vizualization (ggplot2)
+- Data imports (Excel, SQL)
+
+**Break 30 minutes**
+
+- Refreshments & Networking
+
+**Block II 90 minutes**
+
+- Manipulation of grouped data (dplyr)
+- Vizualization of grouped data (ggplot2)
+- Advanced data manipulation (dplyr, tidyr)
+
+# Data manipulation:<br>examples
+
 
 ## Logarithmic scale
 

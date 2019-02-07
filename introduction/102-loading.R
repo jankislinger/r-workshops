@@ -44,3 +44,14 @@ file_name <- 'data/msleep_ggplot2.csv'
 if (!file.exists(file_name)) download.file(file_url, file_name)
 msleep <- read_csv(file_name)
 msleep <- read_csv(file_name, col_types = cols())
+
+
+
+# Excel -------------------------------------------------------------------
+
+require(tidyverse)
+require(readxl)
+
+pid <- read_excel('data/statistika_pid.xlsx')
+mtcars_excel <- read_excel(readxl_example("datasets.xls"), sheet = 'mtcars')
+
