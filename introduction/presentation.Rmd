@@ -69,7 +69,6 @@ Me & R:
 - How to use RStudio efficiently
 - How to load and manipulate data
 - How to visualize your data
-- How to run statistical and machine learning models
 - How to automate your daily tasks in simple scripts
 - How to generate reports and analyses w/o any effort
 
@@ -82,7 +81,8 @@ Me & R:
 - General programming in R
 - Package development
 - Efficient sharing work with your team
-- Math behind statistical and machine learning models
+- How to run statistical and machine learning models
+- How to generate reports and analyses w/o any effort
 
 *All these topics (except base R) will be covered in other workshops*
 
@@ -241,7 +241,7 @@ Other:
 
 - `alt` + `shift` + `k`: See all shortcuts
 - `ctrl` + `shift` + `c`: comment / uncomment code
-- `ctrl` + `shift` + `m`: comment / uncomment code
+- `ctrl` + `shift` + `m`: pipe `%>%`
 
 Most of shortcuts from other text editors works as well.
 
@@ -251,8 +251,9 @@ Most of shortcuts from other text editors works as well.
 
 - `select()` select columns
 - `filter()` filter rows
-- `arrange()`	re-order or arrange rows
 - `mutate()` create new columns
+
+- `arrange()`	re-order or arrange rows
 - `summarise()`	summarise values
 - `group_by()` allows for group operations in the “split-apply-combine” concept
 
@@ -264,8 +265,35 @@ Most of shortcuts from other text editors works as well.
 ![](images/magrittr.jpeg)
 </div>
 
+Shortcut: `ctrl` + `shift` + `m`
+
+<<<<<<< HEAD
+=======
+## Pipes
+
+`x %>% f()` is equivalent to `f(x)`
+
+`x %>% f(y)` is equivalent to `f(x, y)`
+
+```{r, echo=TRUE, eval=FALSE}
+mtcars %>% 
+  filter(hp >= 100) %>% 
+  mutate(cons = 235.215 / mpg) %>% 
+  rownames_to_column('model') %>% 
+  select(model, cons, hp, weight = wt)
+```
+
+is equivalent to
+
+```{r, echo=TRUE, eval=FALSE}
+select(rownames_to_column(mutate(filter(mtcars, hp >= 100), cons = 235.215 / mpg), 'model'),
+       model, cons, hp, weight = wt)
+```
+
+
 # Data manipulation
 
+>>>>>>> c0128303b20dc911636c7497e23470c1bfb0db54
 ## Starwars summary
 
 ```{r echo=TRUE}
@@ -306,19 +334,6 @@ starwars %>%
 ## The Force Awakens
 ```{r echo=TRUE}
 data('starwars')
-```
-
-Select only characters that appeared in movie _The Force Awakens_ and sort them by number of means of transport.
-
-```{r}
-starwars %>% 
-  filter(map_lgl(films, ~'The Force Awakens' %in% .x)) %>% 
-  mutate_at(vars(num_vehicles = vehicles, num_starships = starships),
-            funs(map_int(., length))) %>% 
-  mutate(num_means_of_transport = num_vehicles + num_starships,
-         num_means_by_type = paste(num_vehicles, num_starships, sep = '+')) %>% 
-  arrange(-num_means_of_transport) %>% 
-  select(name, num_means_of_transport, num_means_by_type)
 ```
 
 ## Mammals sleep
@@ -689,65 +704,19 @@ pid <- read_excel('data/statistika_pid.xlsx')
 - Tell any story with the data
 
 
-## Agenda - Part 3
+# Backup
 
-**Block I 90 minutes**
-
-- Introduction to machine learning
-- Vizualization (ggplot2)
-- Linear regression
-
-**Break 30 minutes**
-
-- Refreshments & Networking
-
-**Block II 90 minutes**
-
-- Logistic regression
-- Model training (best practice)
-
-## Stats vs ML
-
-Statistics:
-
-- find and interpret relations
-- p-values, confidence intervals, standard errors
-- based on probability
-
-Machine Learning
-
-- relations hidden inside the model
-- predictions
-- based on optimization
-
-## Simple regression line
+Select only characters that appeared in movie _The Force Awakens_ and sort them by number of means of transport.
 
 ```{r}
-as_data_frame(mtcars) %>% 
-  ggplot(aes(hp, mpg)) +
-  geom_point() +
-  geom_smooth(method = 'lm')
-```
-
-## Grouped mean
-
-```{r}
-as_data_frame(mtcars) %>% 
-  ggplot(aes(gear, mpg, group = gear)) +
-  geom_boxplot()
-```
-
-# Regression
-
-# Logistic regression
-
-## Example data
-
-```{r echo=TRUE, message=FALSE, warning=FALSE}
-# install.packages('mlbench')
-require(mlbench)
-data(BreastCancer)
-as_data_frame(BreastCancer)
+starwars %>% 
+  filter(map_lgl(films, ~'The Force Awakens' %in% .x)) %>% 
+  mutate_at(vars(num_vehicles = vehicles, num_starships = starships),
+            funs(map_int(., length))) %>% 
+  mutate(num_means_of_transport = num_vehicles + num_starships,
+         num_means_by_type = paste(num_vehicles, num_starships, sep = '+')) %>% 
+  arrange(-num_means_of_transport) %>% 
+  select(name, num_means_of_transport, num_means_by_type)
 ```
 
 
