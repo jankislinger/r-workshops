@@ -68,63 +68,43 @@ require(tidyverse)
 - statisticke modelovani (modelr)
 
 ## Vyhody R
- - open source
- - reprodukovatelnost vysledku
- - snadne verzovani
- - prostredi pro praci s daty (spolu s RStudiem)
- - komunita
 
-## RStudio cheat sheets
+- open source
+- reprodukovatelnost vysledku
+- snadne verzovani
+- prostredi pro praci s daty (spolu s RStudiem)
+- komunita
 
-<div align="center">
-![](images/cheatsheet-ggplot.png)
-</div>
-
-
-## StackOverflow
-
-![](images/so.png)
-
-
-## RStudio Community
-
-![](images/comm-rstudio.png)
-
-## Google
+## Learn
 
 <div align="center">
-![](images/google.png)
+![](https://d33wubrfki0l68.cloudfront.net/b88ef926a004b0fce72b2526b0b5c4413666a4cb/24a30/cover.png)
 </div>
 
-## R-bloggers
+## More books
 
-![](images/r-bloggers.png)
+- Advanced R
+- Text Mining with R
+- R Packages
+- Hands-On Programming with R
+- Software for Data Analysis
+- Machine Learning with R
 
-## Twitter #rstats
+## Help Online
 
-<div class="columns-2">
+- RStudio cheat sheets
+- Stack Overflow
+- Google
+- RStudio Community
 
-**Hadley Wickham**<br>
-Chief Scientist at RStudio<br>
-<a href="https://twitter.com/hadleywickham">@hadleywickham</a>
-<br><br>
 
-**Jenny Bryan**<br>
-Proffesor at UBC, DS at RStudio<br>
-<a href="https://twitter.com/jennybryan">@JennyBryan</a>
-<br><br>
+## Inspiration
 
-**Mara Averick**<br>
-Inspirations for visualization<br>
-<a href="https://twitter.com/dataandme">@dataandme</a>
-<br><br>
+- R-bloggers
+- Medium posts
+- #TidyTuesdays on twitter
 
-**David Robinson**<br>
-Chief Data Scientist at DataCamp<br>
-<a href="https://twitter.com/drob">@drob</a>
-<br><br>
-
-</div>
+![](https://pbs.twimg.com/media/FgEanVfVUAA0JrF?format=jpg&name=4096x4096)
 
 
 ## Time to start
