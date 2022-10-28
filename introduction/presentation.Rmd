@@ -107,12 +107,6 @@ require(tidyverse)
 ![](https://pbs.twimg.com/media/FgEanVfVUAA0JrF?format=jpg&name=4096x4096)
 
 
-## Time to start
-
-- Make sure you have R & RStudio installed. Problems? Ask for help
-- Open RStudio
-- Create new project: **File > New Project... > New directory > New project**
-- Always create new project before doing something
 
 <br>
 
@@ -157,13 +151,35 @@ Other:
 *... we will cover this in workshop **R for teams**.*
 
 
-# RStudio look-around
+# RStudio environment
+
+## Time to start
+
+- Make sure you have R & RStudio installed
+  - Problems? Ask for help
+- Open RStudio
+
+## Console
+
+## Packages
+
+```{r, eval=FALSE}
+install.packages("tidyverse")
+```
+
+## New file
+
+## New project
+
+- Create new project: **File > New Project... > New directory > New project**
+- Always create new project before doing something
+
 
 ## Shortcuts
 
-- `alt` + `shift` + `k`: See all shortcuts
 - `ctrl` + `shift` + `c`: comment / uncomment code
 - `ctrl` + `shift` + `m`: pipe `%>%`
+- `alt` + `shift` + `k`: See all shortcuts
 
 Most of shortcuts from other text editors works as well.
 
