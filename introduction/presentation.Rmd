@@ -8,58 +8,17 @@ output:
     widescreen: no
 ---
 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
 require(tidyverse)
 ```
 
-## Minervo
-
-**Innovative and meaningfull approach to informal education.** 
-
-- Interactive and practical workshops
-- Social impact
-- Networking
-- Afordable
-- Nice and inspiring environment
-
-
-## About the tutor
-
-Experience:
-
-- Data scientist at Quichesoft - fuel price optimization
-- Data scientist at RTSmunity - esport betting
-- Credit risk analyst at Ernst & Young
-- Financial analyst at Raiffeisenbank
-
-Hobbies:
-
-- Sport - american football, tenis
-- Education - machine learning, AI
-
-Me & R:
-
-- 6 years of experience - statistical modelling, vizualization, data analysis
-- 2 years full-time - programming, package development
-
-
-## About You
-
-<br>
-
-**>> Who are you and what do you work on?**
-
-**>> Where and why do you use R nowadays?**
-
-**>> What do you expect from today's workshop?**
-
-
 ## Goals of this workshop
 
 1. Understand the basics of R language
-2. Be able to perform simple manipulation of a data frame
+2. Be able to perform simple data manipulation
 3. Vizualize your data and communicate results
 
 
@@ -71,66 +30,49 @@ Me & R:
 - How to visualize your data
 - How to automate your daily tasks in simple scripts
 - How to generate reports and analyses w/o any effort
+- How to estimate simple statistical models
 
 *... not today but throughout all three parts.*
 
 
 ## You will NOT learn...
 
-- The **base** approach to R (ugly and boring)
+- The **base** approach to R (the old way)
 - General programming in R
 - Package development
 - Efficient sharing work with your team
-- How to run statistical and machine learning models
-- How to generate reports and analyses w/o any effort
+- Interactive dashboards (shiny apps)
+- How to train advanced machine learning models
+- Mathematics behind the statistical models
 
-*All these topics (except base R) will be covered in other workshops*
+## R
 
-## Base R
+- programovaci jazyk
+- zamereni na statistiku
+- open source
+- velka cast napsana v C++ / fortran
 
-```{r echo=TRUE}
-data <- data.frame(x = 1:5)
-data$y <- data$x^2
-plot(data$x, data$y)
-```
+## RStudio
+
+- vyvojove prostredi
+- primarne zamerene na praci s R
+- pomocne nastroje pro tidyverse
+- data viewer, plot viewer
+- Python, Julia, C++, ...
 
 ## Tidyverse
 
-```{r echo=TRUE}
-data_frame(x = 1:5, y = x^2) %>% 
-  ggplot(aes(x, y)) + geom_point()
-```
+- soubor knihoven v R
+- prace s daty (dplyr, tidyr)
+- vizualizace (ggplot2)
+- statisticke modelovani (modelr)
 
-
-## Please give us a feedback
-
-<br>
-<div align="center">
-![](images/help-me-help-you.gif)
-</div>
-
-
-## Agenda - Part 1
-
-**Block I 90 minutes**
-
-- Introduction into R & RStudio
-- Sources for learning and/or help
-- Syntax and data structures
-- Basic data imports (RData, csv, Excel)
-
-
-**Break 30 minutes**
-
-- Refreshments & Networking
-
-**Block II 90 minutes**
-
-- Basic data manipulation (dplyr)
-- Basic vizualization (ggplot2)
-
-
-# Where to find help
+## Vyhody R
+ - open source
+ - reprodukovatelnost vysledku
+ - snadne verzovani
+ - prostredi pro praci s daty (spolu s RStudiem)
+ - komunita
 
 ## RStudio cheat sheets
 
